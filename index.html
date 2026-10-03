@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravelly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#" aria-label="Ravelly, página inicial"><img class="logo__mark" src="assets/logo-mark.png" alt="" width="32" height="32">Ravelly</a>
+    <nav aria-label="Principal">
+      <ul class="links">
+        <li><a href="#" aria-current="page">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary" href="#contato">Solicitar orçamento
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="menu" id="menu" data-open="false">
+    <a href="#" aria-current="page">Início</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#precos">Preços</a>
+    <a href="#contato">Contato</a>
+    <a class="btn btn--primary" href="#contato">Solicitar orçamento
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="hero-wrap">
+    <div class="gradient-bg" id="heroBg" aria-hidden="true"></div>
+  <section class="hero" id="inicio">
+    <div class="hero__text">
+      <h1>Sites que vendem pelo <em>seu negócio.</em></h1>
+      <p class="lead">Criamos sites e sistemas rápidos, claros e feitos para transformar visitas em conversas — e conversas em clientes.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="#contato">Quero vender mais
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#projetos">Ver projetos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>
+        </a>
+      </div>
+      <ul class="checks">
+        <li><img src="assets/check-circle.png" alt="">Entrega em até 15 dias</li>
+        <li><img src="assets/check-circle.png" alt="">100% responsivo</li>
+        <li><img src="assets/check-circle.png" alt="">Suporte humano</li>
+      </ul>
+    </div>
+
+    <div class="showcase" aria-hidden="true">
+      <img class="glow" src="assets/ambient-glow.png" alt="">
+      <img class="browser" src="assets/browser.png" alt="">
+      <img class="wa" src="assets/whatsapp-card.png" alt="">
+      <img class="perf" src="assets/performance-card.png" alt="">
+    </div>
+  </section>
+  </div>
+
+  <img class="divider" src="assets/divisor.png" alt="" aria-hidden="true">
+
+  <section class="benefits" id="beneficios">
+    <div class="benefits__head">
+      <h2>Presença digital que trabalha por você.</h2>
+      <p class="benefits__intro">Não basta estar online. Seu site precisa ser encontrado, inspirar segurança e facilitar o próximo passo.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><h3>Encontrado no Google</h3><p>Estrutura técnica, velocidade e conteúdo preparados para colocar sua empresa no radar de quem já está procurando.</p><div class="card__foot"><strong class="card__metric">SEO</strong><span class="card__tag">Base otimizada</span></div></article>
+      <article class="card"><span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Confiança em cada detalhe</h3><p>Design autoral, narrativa clara e acabamento premium para sua marca parecer tão profissional quanto ela realmente é.</p><div class="card__foot"><strong class="card__metric">Design</strong><span class="card__tag">Mais credibilidade</span></div></article>
+      <article class="card"><span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><h3>Conversas no WhatsApp</h3><p>Jornadas de conversão pensadas para reduzir dúvidas e levar o visitante à ação certa, sem atrito.</p><div class="card__foot"><strong class="card__metric">Conversão</strong><span class="card__tag">Mais contatos</span></div></article>
+    </div>
+  </section>
+
+  <section class="services" id="servicos">
+    <div class="services__inner">
+      <div>
+        <h2>Do clique à operação.</h2>
+        <p class="services__lead">Estratégia, experiência e tecnologia reunidas em uma entrega enxuta — sem templates genéricos ou soluções improvisadas.</p>
+        <div class="note"><img src="assets/sparkles.png" alt=""><span>Cada projeto nasce de um diagnóstico, não de um pacote pronto.</span></div>
+      </div>
+      <ol class="svc">
+        <li class="svc__row"><span class="svc__num">/01</span><span class="svc__icon"><img src="assets/mouse-pointer-click.png" alt=""></span>
+          <div class="svc__body"><h3>Landing pages</h3><p>Páginas objetivas para campanhas, lançamentos e ofertas — desenhadas para converter tráfego em oportunidade.</p><ul class="tags"><li>Copy estratégica</li><li>Integrações</li><li>Alta conversão</li></ul></div>
+          <a class="svc__go" href="#contato" aria-label="Saiba mais: Landing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+        <li class="svc__row"><span class="svc__num">/02</span><span class="svc__icon"><img src="assets/panels-top-left.png" alt=""></span>
+          <div class="svc__body"><h3>Sites institucionais</h3><p>Uma presença completa para apresentar sua marca, seus diferenciais e criar confiança antes do primeiro contato.</p><ul class="tags"><li>Arquitetura de conteúdo</li><li>SEO</li><li>CMS simples</li></ul></div>
+          <a class="svc__go" href="#contato" aria-label="Saiba mais: Sites institucionais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+        <li class="svc__row"><span class="svc__num">/03</span><span class="svc__icon"><img src="assets/boxes.png" alt=""></span>
+          <div class="svc__body"><h3>Sistemas sob medida</h3><p>Portais, dashboards e automações que organizam processos, conectam dados e acompanham o crescimento da operação.</p><ul class="tags"><li>UX de produto</li><li>APIs</li><li>Escalabilidade</li></ul></div>
+          <a class="svc__go" href="#contato" aria-label="Saiba mais: Sistemas sob medida"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="projects" id="projetos">
+    <div class="projects__head">
+      <div>
+        <h2>Trabalho bonito. Resultado mensurável.</h2>
+        <p class="projects__lead">Cada projeto combina clareza de negócio com uma presença que as pessoas lembram.</p>
+      </div>
+      <a class="btn btn--ghost btn--ext" href="#projetos">Ver todos os projetos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+    <div class="proj-grid">
+      <article class="proj proj--empty" style="--c:#e8ff47">
+        <div class="proj__shot"><div class="frame" aria-hidden="true"><div class="frame__bar"><i></i><i></i><i></i></div><div class="frame__body"></div></div></div>
+        <div class="proj__info"><div><h3>Pode ser o seu aqui!</h3><p class="proj__meta">E-commerce · Ciclismo</p></div><a class="proj__link" href="#contato">Entre em contato conosco<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+      <article class="proj" style="--c:#4d79ff">
+        <div class="proj__shot"><div class="frame" aria-hidden="true"><div class="frame__bar"><i></i><i></i><i></i></div><div class="frame__body"><img src="assets/easytire-preview.png" alt=""></div></div></div>
+        <div class="proj__info"><div><h3>EasyTire</h3><p class="proj__meta">Plataforma · Bikeshop</p></div><a class="proj__link" href="#contato">Controle de cadastro mais fácil<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+      <article class="proj proj--empty" style="--c:#ff875f">
+        <div class="proj__shot"><div class="frame" aria-hidden="true"><div class="frame__bar"><i></i><i></i><i></i></div><div class="frame__body"></div></div></div>
+        <div class="proj__info"><div><h3>Pode ser o seu aqui!</h3><p class="proj__meta">Produto digital · IA</p></div><a class="proj__link" href="#contato">Entre em contato conosco<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+      <article class="proj proj--empty" style="--c:#a78bfa">
+        <div class="proj__shot"><div class="frame" aria-hidden="true"><div class="frame__bar"><i></i><i></i><i></i></div><div class="frame__body"></div></div></div>
+        <div class="proj__info"><div><h3>Pode ser o seu aqui!</h3><p class="proj__meta">SaaS · Educação</p></div><a class="proj__link" href="#contato">Entre em contato conosco<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="process" id="processo">
+    <div class="process__inner">
+      <div class="process__head">
+        <h2>Um processo simples para tirar ideias do papel.</h2>
+        <p class="process__lead">Você acompanha decisões, prazos e evolução sem precisar falar “tecniquês”.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="step__num">/01</span><h3>Imersão</h3><p>Entendemos seu negócio, público e objetivo.</p></li>
+        <li class="step"><span class="step__num">/02</span><h3>Direção</h3><p>Definimos conteúdo, visual e experiência.</p></li>
+        <li class="step"><span class="step__num">/03</span><h3>Construção</h3><p>Design e código avançam juntos, com agilidade.</p></li>
+        <li class="step"><span class="step__num">/04</span><h3>Lançamento</h3><p>Testamos, publicamos e acompanhamos de perto.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="pricing" id="precos">
+    <div class="pricing__head">
+      <div>
+        <h2>Planos simples. Entregas sérias.</h2>
+        <p class="pricing__lead">Comece com o essencial e evolua conforme o seu negócio cresce. Sem mensalidade obrigatória.</p>
+      </div>
+      <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Pagamento seguro e por etapas</span>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <div class="plan__top"><h3>Básico</h3></div>
+        <p class="plan__desc">Para colocar uma ideia no ar com clareza e profissionalismo.</p>
+        <p class="price"><strong>R$299</strong><span>a partir de</span></p>
+        <ul class="feats"><li>Landing page de até 5 seções</li><li>Design responsivo</li><li>Botão para WhatsApp</li><li>SEO essencial</li><li>1 rodada de ajustes</li></ul>
+        <a class="btn btn--ghost" href="#contato">Escolher este plano<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="plan plan--featured">
+        <div class="plan__top"><h3>Profissional</h3><span class="badge">Mais escolhido</span></div>
+        <p class="plan__desc">A escolha certa para negócios que precisam gerar demanda.</p>
+        <p class="price"><strong>R$499</strong><span>a partir de</span></p>
+        <ul class="feats"><li>Landing page completa</li><li>Copy orientada à conversão</li><li>Analytics e Pixel</li><li>Formulário inteligente</li><li>Performance avançada</li><li>2 rodadas de ajustes</li></ul>
+        <a class="btn btn--primary" href="#contato">Começar meu projeto<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="plan">
+        <div class="plan__top"><h3>Premium</h3></div>
+        <p class="plan__desc">Para marcas que querem uma presença única e escalável.</p>
+        <p class="price"><strong>R$799</strong><span>a partir de</span></p>
+        <ul class="feats"><li>Site institucional completo</li><li>Direção visual personalizada</li><li>CMS para conteúdo</li><li>Integrações sob medida</li><li>SEO técnico avançado</li><li>Suporte prioritário</li></ul>
+        <a class="btn btn--ghost" href="#contato">Escolher este plano<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+    <div class="callout"><img src="assets/sparkles.png" alt=""><span><strong>Precisa de um sistema ou escopo diferente?</strong> Montamos uma proposta sob medida.</span><a href="#contato">Falar sobre meu projeto →</a></div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="faq__inner">
+      <div>
+        <h2>Antes de começar, vale saber.</h2>
+        <p class="faq__lead">Se a sua dúvida não estiver aqui, mande uma mensagem. A gente responde sem roteiro e sem pressão.</p>
+        <span class="faq__badge"><img src="assets/clock-3.png" alt=""><span>Resposta em até 3 dias úteis</span></span>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" id="faq-q0" aria-expanded="false" aria-controls="faq-a0"><span>Preciso pagar hospedagem e domínio?</span><span class="faq__tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button></h3>
+          <div class="faq__panel" id="faq-a0" role="region" aria-labelledby="faq-q0"><div><p>Domínio e hospedagem são contratados à parte, mas indicamos as melhores opções e configuramos tudo para você.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>Em quanto tempo o site fica pronto?</span><span class="faq__tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button></h3>
+          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><div><p>Landing pages ficam prontas em até 15 dias. Sites institucionais e sistemas têm o prazo definido na proposta, de acordo com o escopo.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>Posso pedir alterações depois da entrega?</span><span class="faq__tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button></h3>
+          <div class="faq__panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><div><p>Sim. Cada plano inclui rodadas de ajustes e, depois delas, você pode contratar novas melhorias sempre que quiser.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>O site funciona no celular?</span><span class="faq__tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button></h3>
+          <div class="faq__panel" id="faq-a3" role="region" aria-labelledby="faq-q3"><div><p>Sim. Todo projeto é 100% responsivo e testado em celulares, tablets e computadores.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <h3 style="margin:0"><button class="faq__q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>Vocês ajudam com textos e imagens?</span><span class="faq__tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg></span></button></h3>
+          <div class="faq__panel" id="faq-a4" role="region" aria-labelledby="faq-q4"><div><p>Ajudamos. O plano Profissional já inclui copy orientada à conversão e podemos orientar a escolha das imagens.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact" id="contato">
+    <div class="contact__box">
+      <div class="contact__info">
+        <h2>Seu próximo cliente pode estar a um site de distância.</h2>
+        <p class="contact__lead">Conte o que você quer construir. Em até um dia útil, voltamos com perguntas certas e um caminho possível.</p>
+        <a class="wpp" id="wppLink" href="#contato" target="_blank" rel="noopener">
+          <span class="wpp__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+          <span class="wpp__text"><small>Prefere ir direto ao ponto?</small>Fale com a gente no WhatsApp →</span>
+          <span class="wpp__dot" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <form class="form" id="formContato" novalidate>
+        <h3>Conte sobre o projeto</h3>
+        <p class="form__sub">Leva menos de 2 minutos.</p>
+
+        <label class="form__label" for="nome">Seu nome</label>
+        <input class="form__field" id="nome" name="nome" type="text" placeholder="Como podemos chamar você?" autocomplete="given-name" required>
+
+        <fieldset class="chips">
+          <legend class="form__label">O que você precisa?</legend>
+          <label class="chip"><input type="radio" name="tipo" value="uma landing page"><span>Landing page</span></label>
+          <label class="chip"><input type="radio" name="tipo" value="um site" checked><span>Site</span></label>
+          <label class="chip"><input type="radio" name="tipo" value="um sistema"><span>Sistema</span></label>
+          <label class="chip"><input type="radio" name="tipo" value=""><span>Ainda não sei</span></label>
+        </fieldset>
+
+        <label class="form__label" for="ideia">Fale um pouco sobre sua ideia</label>
+        <textarea class="form__field" id="ideia" name="ideia" rows="3" placeholder="Objetivo, momento do negócio e o que precisa acontecer..."></textarea>
+
+        <button class="btn btn--primary form__send" type="submit">Enviar pelo WhatsApp
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2.5 11 13M21.5 2.5 15 21.5l-4-8.5-8.5-4z"/></svg>
+        </button>
+        <p class="form__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados ficam seguros e não enviamos spam.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="logo" href="#" aria-label="Ravelly, topo da página"><img class="logo__mark" src="assets/logo-mark.png" alt="" width="32" height="32">Ravelly</a>
+        <p>Sites e sistemas com estratégia, design e tecnologia para negócios que querem crescer com presença.</p>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/lorenzoravely/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a></li>
+        </ul>
+      </div>
+      <nav class="footer__col" aria-label="Rodapé: navegação">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#precos">Preços</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="footer__col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Landing pages</a></li>
+          <li><a href="#servicos">Sites institucionais</a></li>
+          <li><a href="#servicos">Sistemas sob medida</a></li>
+          <li><a href="#contato">Manutenção e suporte</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:Lorenzooravelicamargo@gmail.com">Lorenzooravelicamargo@gmail.com</a></li>
+          <li><a id="wppRodape" href="#contato" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+        <p class="footer__note">Atendimento remoto para todo o Brasil.</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Ravelly. Feito para ajudar pequenos e médios negócios.</p>
+      <ul>
+        <li><a href="privacidade.html">Política de privacidade</a></li>
+        <li><a href="termos.html">Termos de uso</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/gradient.js"></script>
+</body>
+</html>
