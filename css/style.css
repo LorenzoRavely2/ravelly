@@ -424,22 +424,6 @@ textarea.form__field{height:88px;padding:14px 16px;resize:vertical}
   .svc__go{position:absolute;top:16px;right:16px;width:30px;height:30px}
   .svc__go svg{width:12px;height:12px}
 
-  /* planos: os 3 lado a lado */
-  .plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:32px}
-  .plan,.plan--featured{min-height:0;padding:16px 10px 12px;border-radius:18px;transform:none}
-  .plan--featured{box-shadow:0 18px 40px -20px rgba(124,92,255,.5)}
-  .plan__top{flex-direction:column;align-items:flex-start;gap:6px;min-height:0;margin-top:0}
-  .plan h3,.plan--featured h3{font-size:15px}
-  .badge{height:18px;padding:0 6px;font-size:7px;letter-spacing:.04em}
-  .plan__desc{display:none}
-  .price,.plan--featured .price{flex-direction:column;align-items:flex-start;gap:2px;margin-top:12px}
-  .price strong,.plan--featured .price strong{font-size:22px}
-  .price span{margin:0;font-size:9px}
-  .feats,.plan--featured .feats{gap:8px;margin:14px 0 14px}
-  .feats li{align-items:flex-start;gap:6px;font-size:10.5px;line-height:14px}
-  .feats li::before{width:12px;height:12px;margin-top:1px;background-size:7px}
-  .plan .btn,.plan--featured .btn{height:auto;min-height:38px;margin-top:auto;padding:8px 6px;border-radius:12px;font-size:10.5px;line-height:13px;text-align:center}
-  .plan .btn svg{display:none}
 }
 
 /* ===== CELULAR PEQUENO (≤640px) ===== */
@@ -470,23 +454,6 @@ textarea.form__field{height:88px;padding:14px 16px;resize:vertical}
   .svc p{margin-top:6px;font-size:13px;line-height:19px}
   .svc__go{position:absolute;top:14px;right:14px;width:32px;height:32px}
 
-  /* planos: 3 lado a lado */
-  .plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:32px;align-items:stretch}
-  .plan,.plan--featured{position:relative;min-height:0;padding:20px 9px 12px;border-radius:18px;transform:none}
-  .plan--featured{box-shadow:0 18px 40px -20px rgba(124,92,255,.55)}
-  .plan__top{min-height:0;margin:0;display:block}
-  .plan h3,.plan--featured h3{font-size:14px;letter-spacing:-.02em}
-  .badge{position:absolute;top:-9px;left:50%;transform:translateX(-50%);height:18px;padding:0 7px;font-size:7px}
-  .plan__desc{display:none}
-  .price{flex-direction:column;align-items:flex-start;gap:3px;margin-top:12px}
-  .price strong,.plan--featured .price strong{font-size:22px;letter-spacing:-.03em}
-  .price span{margin:0;font-size:9.5px}
-  .feats,.plan--featured .feats{margin-top:14px;gap:9px}
-  .feats li{align-items:flex-start;gap:6px;font-size:10.5px;line-height:14px}
-  .feats li::before{width:13px;height:13px;margin-top:0;background-size:8px}
-  .plan .btn,.plan--featured .btn{height:auto;min-height:40px;margin-top:auto;padding:8px 4px;font-size:11px;line-height:1.2;text-align:center}
-  .plan .btn svg{display:none}
-  .feats{margin-bottom:16px}
 }
 
 /* e-mail longo no rodapé */
@@ -513,3 +480,64 @@ body.legal{padding-top:0}
 .legal__main ul{margin:0 0 14px;padding-left:20px}
 .legal__main a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 @media (max-width:640px){.legal__main{padding-top:48px;padding-bottom:72px}}
+
+
+/* ANIMAÇÕES DE SCROLL */
+:root{--ease-out:cubic-bezier(.22,1,.36,1)}
+
+/* revelar ao rolar: usa as propriedades individuais "translate" e "opacity"
+   para não conflitar com o transform de outros elementos (ex.: plano em destaque) */
+.js [data-reveal]{opacity:0;translate:0 28px;transition:opacity .9s var(--ease-out),translate .9s var(--ease-out);will-change:opacity,translate}
+.js [data-reveal].is-visible{opacity:1;translate:0 0}
+
+/* barra de progresso de leitura */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;pointer-events:none;background:linear-gradient(90deg,var(--brand),#b8a6ff);transform:scaleX(0);transform-origin:left center;will-change:transform}
+
+/* entrada do mockup do hero + paralaxe leve nos cards flutuantes */
+@keyframes showcase-in{from{opacity:0;transform:translateY(32px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes glow-in{from{opacity:0}to{opacity:.32}}
+.showcase .browser{animation:showcase-in 1.1s var(--ease-out) .15s both}
+.showcase .wa{animation:showcase-in 1s var(--ease-out) .5s both;translate:0 var(--py-wa,0px)}
+.showcase .perf{animation:showcase-in 1s var(--ease-out) .7s both;translate:0 var(--py-perf,0px)}
+.showcase .glow{animation:glow-in 1.6s ease-out both}
+
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal]{opacity:1;translate:none;transition:none}
+  .showcase img{animation:none;translate:none}
+  .scroll-progress{display:none}
+}
+
+
+/* PREÇOS: abas por tipo de projeto */
+.plans[hidden]{display:none}
+.ptabs{display:inline-flex;gap:4px;margin-top:40px;padding:5px;border-radius:999px;background:#101015;border:1px solid #1e1e25}
+.ptab{height:42px;padding:0 22px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:500 14px/1 Inter,sans-serif;cursor:pointer;transition:background .3s var(--ease-out),color .25s}
+.ptab:hover{color:var(--text)}
+.ptab[aria-selected="true"]{background:var(--brand);color:#fff}
+.ptabs~.pwrap .plans{margin-top:28px}
+@keyframes plan-in{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+.plans.anim .plan{animation:plan-in .6s var(--ease-out) both}
+.plans.anim .plan:nth-child(2){animation-delay:.07s}
+.plans.anim .plan:nth-child(3){animation-delay:.14s}
+@media (prefers-reduced-motion:reduce){.plans.anim .plan{animation:none}.ptab{transition:none}}
+@media (max-width:640px){
+  .ptabs{display:flex;margin-top:28px}
+  .ptab{flex:1;padding:0 8px;font-size:13px}
+}
+
+/* PREÇOS no celular: carrossel com um card por vez (desliza para os lados) */
+.pdots{display:none}
+@media (max-width:640px){
+  .pwrap{margin-inline:calc(var(--pad) * -1)}
+  .pwrap .plans:not([hidden]){display:flex;grid-template-columns:none;align-items:stretch;gap:14px;margin-top:12px;padding:26px var(--pad) 30px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pwrap .plans::-webkit-scrollbar{display:none}
+  .pwrap .plan,.pwrap .plan--featured{flex:0 0 82%;max-width:340px;scroll-snap-align:center;min-height:0;padding:28px 24px;border-radius:28px}
+  .pwrap .plan--featured{box-shadow:0 18px 44px -24px rgba(124,92,255,.6)}
+  .pwrap .plan h3,.pwrap .plan--featured h3{font-size:24px}
+  .pwrap .price strong,.pwrap .plan--featured .price strong{font-size:46px}
+  .pwrap .feats,.pwrap .plan--featured .feats{gap:13px}
+  .pwrap .plan .btn,.pwrap .plan--featured .btn{height:54px}
+  .pdots{display:flex;justify-content:center;gap:8px;margin-top:-6px}
+  .pdots i{width:6px;height:6px;border-radius:3px;background:#2a2a32;transition:width .3s var(--ease-out),background .3s}
+  .pdots i.is-on{width:22px;background:var(--brand)}
+}

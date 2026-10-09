@@ -28,6 +28,7 @@ function linkWhats(texto){
 
 wppLink.href = linkWhats('Olá! Vim pelo site da Ravelly e queria conversar sobre um projeto.');
 
+let planoEscolhido = '';
 formContato.addEventListener('submit', e=>{
   e.preventDefault();
   const nome = formContato.nome.value.trim();
@@ -42,6 +43,7 @@ formContato.addEventListener('submit', e=>{
 
   let msg = 'Olá! Me chamo ' + nome + ' e vim pelo site da Ravelly.';
   msg += tipo ? ' Preciso de ' + tipo + '.' : ' Ainda não sei bem o que preciso.';
+  if(planoEscolhido) msg += ' Tenho interesse no plano ' + planoEscolhido + '.';
   if(ideia) msg += '\n\nSobre o projeto: ' + ideia;
 
   window.open(linkWhats(msg), '_blank', 'noopener');
@@ -88,3 +90,123 @@ window.addEventListener('scroll',()=>{
   });
 }));
 atualizarAtivo();
+
+
+// animações de scroll
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // barra de progresso de leitura
+  const barra=document.createElement('div');
+  barra.className='scroll-progress';
+  barra.setAttribute('aria-hidden','true');
+  document.body.appendChild(barra);
+
+  // paralaxe leve nos cards flutuantes do hero
+  const vitrine=document.querySelector('.showcase');
+  let rafScroll=false;
+  function aoRolar(){
+    rafScroll=false;
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    barra.style.transform='scaleX('+(max>0?Math.min(window.scrollY/max,1):0)+')';
+    if(vitrine){
+      const r=vitrine.getBoundingClientRect();
+      if(r.bottom>0&&r.top<window.innerHeight){
+        const p=Math.max(-1,Math.min(1,(r.top+r.height/2-window.innerHeight/2)/window.innerHeight));
+        vitrine.style.setProperty('--py-wa',(p*-22).toFixed(1)+'px');
+        vitrine.style.setProperty('--py-perf',(p*34).toFixed(1)+'px');
+      }
+    }
+  }
+  window.addEventListener('scroll',()=>{if(!rafScroll){rafScroll=true;requestAnimationFrame(aoRolar)}},{passive:true});
+  window.addEventListener('resize',aoRolar);
+  aoRolar();
+
+  // revelar elementos ao entrar na tela, com escalonamento entre os que aparecem juntos
+  if(!('IntersectionObserver' in window)) return;
+  const io=new IntersectionObserver(entradas=>{
+    entradas
+      .filter(e=>e.isIntersecting)
+      .sort((a,b)=>a.target.compareDocumentPosition(b.target)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1)
+      .forEach((e,i)=>{
+        const el=e.target,atraso=Math.min(i,5)*90;
+        io.unobserve(el);
+        el.style.transitionDelay=atraso+'ms';
+        requestAnimationFrame(()=>el.classList.add('is-visible'));
+        // ao terminar, remove o estado de animação para não interferir em hover/foco
+        setTimeout(()=>{
+          el.removeAttribute('data-reveal');
+          el.classList.remove('is-visible');
+          el.style.transitionDelay='';
+        },atraso+1000);
+      });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+
+
+// preços: abas por tipo de projeto
+(function(){
+  const abas=[...document.querySelectorAll('.ptab')];
+  if(!abas.length) return;
+  const reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ativar(aba,foco){
+    abas.forEach(a=>{
+      const on=a===aba;
+      a.setAttribute('aria-selected',on);
+      a.tabIndex=on?0:-1;
+      const painel=document.getElementById(a.getAttribute('aria-controls'));
+      painel.hidden=!on;
+      painel.classList.remove('anim');
+      if(on&&!reduz){void painel.offsetWidth;painel.classList.add('anim')}
+    });
+    if(foco) aba.focus();
+    centralizar();
+  }
+  // celular: os planos viram um carrossel; abre centralizado no Premium e mostra bolinhas
+  const mobile=matchMedia('(max-width:640px)');
+  const wrap=document.querySelector('.pwrap');
+  const dots=document.createElement('div');
+  dots.className='pdots';
+  dots.setAttribute('aria-hidden','true');
+  dots.innerHTML='<i></i><i></i><i></i>';
+  wrap.appendChild(dots);
+  function painelAtivo(){return wrap.querySelector('.plans:not([hidden])')}
+  function marcarDots(){
+    const p=painelAtivo(),cards=[...p.querySelectorAll('.plan')];
+    const centro=p.scrollLeft+p.clientWidth/2;
+    let melhor=0,dist=1e9;
+    cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-centro);if(d<dist){dist=d;melhor=i}});
+    [...dots.children].forEach((d,i)=>d.classList.toggle('is-on',i===melhor));
+  }
+  function centralizar(){
+    if(!mobile.matches) return;
+    requestAnimationFrame(()=>{
+      const p=painelAtivo(),f=p.querySelector('.plan--featured');
+      p.scrollLeft=f.offsetLeft-(p.clientWidth-f.offsetWidth)/2;
+      marcarDots();
+    });
+  }
+  wrap.querySelectorAll('.plans').forEach(p=>p.addEventListener('scroll',()=>requestAnimationFrame(marcarDots),{passive:true}));
+  mobile.addEventListener('change',centralizar);
+  centralizar();
+
+  abas.forEach((a,i)=>{
+    a.addEventListener('click',()=>ativar(a));
+    a.addEventListener('keydown',e=>{
+      const d={ArrowRight:1,ArrowLeft:-1}[e.key];
+      if(d){e.preventDefault();ativar(abas[(i+d+abas.length)%abas.length],true)}
+      if(e.key==='Home'){e.preventDefault();ativar(abas[0],true)}
+      if(e.key==='End'){e.preventDefault();ativar(abas[abas.length-1],true)}
+    });
+  });
+
+  // ao escolher um plano, já seleciona o tipo no formulário e guarda o plano na mensagem
+  document.querySelectorAll('.plans .btn').forEach(b=>b.addEventListener('click',()=>{
+    const tipo=b.closest('.plans').dataset.tipo;
+    const radio=[...formContato.querySelectorAll('input[name="tipo"]')].find(r=>r.value===tipo);
+    if(radio) radio.checked=true;
+    planoEscolhido=b.dataset.plano||'';
+  }));
+  formContato.querySelectorAll('input[name="tipo"]').forEach(r=>r.addEventListener('change',()=>{planoEscolhido=''}));
+})();
