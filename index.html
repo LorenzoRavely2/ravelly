@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ravelly</title>
+<title>Ravelly | Sites, landing pages e sistemas que vendem pelo seu negócio</title>
+<meta name="description" content="Criamos landing pages, sites institucionais e sistemas sob medida: rápidos, claros e feitos para transformar visitas em conversas e clientes. Peça seu orçamento.">
+<meta name="theme-color" content="#060608">
+<link rel="canonical" href="https://ravelly.shop/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Ravelly">
+<meta property="og:title" content="Ravelly | Sites que vendem pelo seu negócio">
+<meta property="og:description" content="Landing pages, sites e sistemas sob medida, com design, estratégia e tecnologia. Orçamento por escrito e pagamento por etapas.">
+<meta property="og:url" content="https://ravelly.shop/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
@@ -76,7 +85,7 @@
   </section>
   </div>
 
-  <img class="divider" src="assets/divisor.png" alt="" aria-hidden="true">
+  <div class="divider" aria-hidden="true"></div>
 
   <section class="benefits" id="beneficios">
     <div class="benefits__head" data-reveal>
@@ -162,7 +171,8 @@
       </div>
       <span class="secure" data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Pagamento seguro e por etapas</span>
     </div>
-        <div class="ptabs" role="tablist" aria-label="Tipo de projeto" data-reveal>
+        <div class="cupom-ok" id="cupomOk" role="status" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Cupom <strong id="cupomOkCodigo"></strong> aplicado: <span id="cupomOkPct"></span>% de desconto em todos os planos</span></div>
+    <div class="ptabs" role="tablist" aria-label="Tipo de projeto" data-reveal>
       <button class="ptab" role="tab" id="tab-landing" aria-controls="painel-landing" aria-selected="true" tabindex="0" type="button">Landing page</button>
       <button class="ptab" role="tab" id="tab-site" aria-controls="painel-site" aria-selected="false" tabindex="-1" type="button">Site</button>
       <button class="ptab" role="tab" id="tab-sistema" aria-controls="painel-sistema" aria-selected="false" tabindex="-1" type="button">Sistema</button>
@@ -298,6 +308,11 @@
           <label class="chip"><input type="radio" name="tipo" value="um sistema"><span>Sistema</span></label>
           <label class="chip"><input type="radio" name="tipo" value=""><span>Ainda não sei</span></label>
         </fieldset>
+        <div class="plano-sel" id="planoSel" hidden>
+          <span class="plano-sel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <span class="plano-sel__body"><small>Plano escolhido</small><span class="plano-sel__name"><strong id="planoSelTipo"></strong><em id="planoSelNivel"></em></span></span>
+          <button type="button" id="planoSelX" aria-label="Remover plano escolhido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
 
         <label class="form__label" for="ideia">Fale um pouco sobre sua ideia</label>
         <textarea class="form__field" id="ideia" name="ideia" rows="3" placeholder="Objetivo, momento do negócio e o que precisa acontecer..."></textarea>

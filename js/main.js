@@ -28,6 +28,11 @@ function linkWhats(texto){
 
 wppLink.href = linkWhats('Olá! Vim pelo site da Ravelly e queria conversar sobre um projeto.');
 
+// cupom: só vale quando a pessoa entra pelo link com ?cupom=CODIGO (ex.: vindo do painel do EasyTire)
+const CUPONS = { EASYTIRE10: 10 }; // código -> % de desconto
+const cupomUrl = (new URLSearchParams(location.search).get('cupom') || '').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,20);
+const descontoCupom = CUPONS[cupomUrl] || 0;
+
 let planoEscolhido = '';
 formContato.addEventListener('submit', e=>{
   e.preventDefault();
@@ -41,10 +46,17 @@ formContato.addEventListener('submit', e=>{
     return;
   }
 
-  let msg = 'Olá! Me chamo ' + nome + ' e vim pelo site da Ravelly.';
-  msg += tipo ? ' Preciso de ' + tipo + '.' : ' Ainda não sei bem o que preciso.';
-  if(planoEscolhido) msg += ' Tenho interesse no plano ' + planoEscolhido + '.';
-  if(ideia) msg += '\n\nSobre o projeto: ' + ideia;
+  const nomeFmt = nome.split(/\s+/).map(p=>p.charAt(0).toUpperCase()+p.slice(1).toLowerCase()).join(' ');
+  const tipoTxt = tipo || '';
+  const fim = t => /[.!?…]$/.test(t) ? t : t + '.';
+
+  let msg = 'Olá! Meu nome é ' + nomeFmt + ' e vim pelo site da Ravelly.';
+  msg += tipoTxt
+    ? ' Preciso de ' + tipoTxt + (planoEscolhido ? ' e tenho interesse no plano ' + planoEscolhido + '.' : '.')
+    : ' Ainda não sei bem o que preciso e gostaria de ajuda para definir.';
+  if(ideia) msg += '\n\nSobre o projeto: ' + fim(ideia);
+  if(descontoCupom) msg += '\n\nTenho o cupom ' + cupomUrl + ' (' + descontoCupom + '% de desconto, indicação do EasyTire).';
+  msg += '\n\nPodemos conversar?';
 
   window.open(linkWhats(msg), '_blank', 'noopener');
 });
@@ -206,7 +218,36 @@ atualizarAtivo();
     const tipo=b.closest('.plans').dataset.tipo;
     const radio=[...formContato.querySelectorAll('input[name="tipo"]')].find(r=>r.value===tipo);
     if(radio) radio.checked=true;
-    planoEscolhido=b.dataset.plano||'';
+    planoEscolhido=b.closest('.plan').querySelector('h3').textContent.trim();
+    const painel=b.closest('.plans');
+    const aba=document.querySelector('.ptab[aria-controls="'+painel.id+'"]');
+    const nivel=b.closest('.plan').querySelector('h3').textContent.trim();
+    planoSelTipo.textContent=aba?aba.textContent.trim():'';planoSelNivel.textContent=nivel;
+    planoSel.hidden=false;
   }));
-  formContato.querySelectorAll('input[name="tipo"]').forEach(r=>r.addEventListener('change',()=>{planoEscolhido=''}));
+  const planoSel=document.getElementById('planoSel'),planoSelTipo=document.getElementById('planoSelTipo'),planoSelNivel=document.getElementById('planoSelNivel');
+  function limparPlano(){planoEscolhido='';planoSel.hidden=true}
+  document.getElementById('planoSelX').addEventListener('click',limparPlano);
+  formContato.querySelectorAll('input[name="tipo"]').forEach(r=>r.addEventListener('change',limparPlano));
 })();
+
+// aplica o cupom nos preços: mostra o valor original riscado e o valor com desconto
+if(descontoCupom){
+  const brl = n => 'R$' + n.toLocaleString('pt-BR');
+  document.querySelectorAll('.price').forEach(p=>{
+    const forte = p.querySelector('strong');
+    const original = parseInt(forte.textContent.replace(/\D/g,''), 10);
+    if(!original) return;
+    const novo = Math.round(original * (100 - descontoCupom) / 100);
+    const antigo = document.createElement('span');
+    antigo.className = 'price__old';
+    antigo.innerHTML = '<s aria-label="de ' + brl(original) + '">' + brl(original) + '</s><em>-' + descontoCupom + '%</em>';
+    p.insertBefore(antigo, forte);
+    forte.textContent = brl(novo);
+    forte.setAttribute('aria-label', 'por ' + brl(novo));
+  });
+  const aviso = document.getElementById('cupomOk');
+  document.getElementById('cupomOkCodigo').textContent = cupomUrl;
+  document.getElementById('cupomOkPct').textContent = descontoCupom;
+  aviso.hidden = false;
+}

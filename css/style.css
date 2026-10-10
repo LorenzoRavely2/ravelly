@@ -72,7 +72,7 @@ h1 em{font-style:normal;color:var(--accent)}
 
 
 /* DIVISOR */
-.divider{display:block;width:100%;height:auto}
+.divider{height:1px;max-width:1440px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(124,92,255,.45),transparent)}
 
 /* BENEFÍCIOS */
 .benefits{max-width:1440px;margin:0 auto;padding:104px var(--pad)}
@@ -181,7 +181,7 @@ h2{margin:0;font:400 clamp(2.25rem,4.03vw,3.625rem)/1.03 Manrope,Inter,sans-seri
 .secure{display:inline-flex;align-items:center;gap:10px;flex:none;font:400 14px/1 Inter,sans-serif;color:var(--muted);padding-bottom:4px}
 .secure svg{width:16px;height:16px;color:#5fd9a0}
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:52px}
-.plan{display:flex;flex-direction:column;min-height:576px;padding:30px;border-radius:32px;background:#101015;border:1px solid #1e1e25}
+.plan{display:flex;flex-direction:column;padding:30px;border-radius:32px;background:#101015;border:1px solid #1e1e25}
 .plan--featured{position:relative;z-index:1;transform:scale(1.045);background:#17171d;border-color:#7c5cff;box-shadow:0 36px 80px -24px rgba(124,92,255,.45)}
 .plan__top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:34px;margin-top:2px}
 .plan h3{margin:0;font:400 26px/1.2 Manrope,Inter,sans-serif;letter-spacing:-.01em;color:var(--text)}
@@ -190,10 +190,10 @@ h2{margin:0;font:400 clamp(2.25rem,4.03vw,3.625rem)/1.03 Manrope,Inter,sans-seri
 .price{display:flex;align-items:flex-end;gap:10px;margin-top:26px}
 .price strong{font:400 52px/1 Manrope,Inter,sans-serif;letter-spacing:-.02em;color:var(--text)}
 .price span{font:400 12px/1 Inter,sans-serif;color:#8a8894;margin-bottom:-2px}
-.feats{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.feats{list-style:none;margin:28px 0 32px;padding:0;display:flex;flex-direction:column;gap:13px}
 .feats li{display:flex;align-items:center;gap:10px;font:400 14px/20px Inter,sans-serif;color:#b4b2be}
 .feats li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:rgba(124,92,255,.22) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a74ff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat}
-.plan .btn{margin-top:28px;justify-content:center;width:100%;font-size:15px}
+.plan .btn{margin-top:auto;justify-content:center;width:100%;font-size:15px}
 .plan .btn--ghost{background:transparent;border-color:#2a2a32}
 .plan .btn--ghost:hover{background:#12121a;border-color:#3a3a45}
 .plan .btn--ghost:hover svg{transform:translateX(3px)}
@@ -541,3 +541,30 @@ body.legal{padding-top:0}
   .pdots i{width:6px;height:6px;border-radius:3px;background:#2a2a32;transition:width .3s var(--ease-out),background .3s}
   .pdots i.is-on{width:22px;background:var(--brand)}
 }
+
+/* FORM: plano escolhido */
+.plano-sel{display:flex;align-items:center;gap:12px;margin:-6px 0 22px;padding:12px 12px 12px 14px;border-radius:16px;background:#fff;border:1px solid #d9d0ff;box-shadow:0 8px 24px -14px rgba(124,92,255,.55);animation:plano-in .45s var(--ease-out) both}
+.plano-sel[hidden]{display:none}
+@keyframes plano-in{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
+.plano-sel__icon{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff;box-shadow:0 0 0 4px rgba(124,92,255,.15)}
+.plano-sel__icon svg{width:16px;height:16px}
+.plano-sel__body{display:flex;flex-direction:column;gap:5px;min-width:0}
+.plano-sel small{font:500 10px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a8894}
+.plano-sel__name{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.plano-sel strong{font:500 15px/1.1 Manrope,Inter,sans-serif;color:#0d0d12}
+.plano-sel em{font:600 11px/1 Inter,sans-serif;font-style:normal;padding:5px 10px;border-radius:999px;background:rgba(124,92,255,.14);color:#5b3fe0}
+.plano-sel button{flex:none;margin-left:auto;width:28px;height:28px;padding:0;border:0;border-radius:50%;background:#f1eff7;color:#5f5d6b;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}
+.plano-sel button svg{width:13px;height:13px}
+.plano-sel button:hover{background:#0d0d12;color:#fff}
+@media (prefers-reduced-motion:reduce){.plano-sel{animation:none}}
+
+/* PREÇOS: valor antigo riscado + desconto */
+.price{flex-wrap:wrap}
+.price .price__old{flex:0 0 100%;display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.price__old s{font:400 18px/1 Manrope,Inter,sans-serif;color:#ff6b78;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:#ff4d5e}
+.price__old em{font:500 10px/1 "JetBrains Mono",ui-monospace,monospace;font-style:normal;letter-spacing:.06em;padding:5px 8px;border-radius:999px;background:rgba(95,217,160,.14);color:#5fd9a0}
+.cupom-ok{display:flex;width:fit-content;max-width:100%;align-items:center;gap:10px;margin-top:28px;padding:10px 16px;border-radius:999px;background:rgba(95,217,160,.1);border:1px solid rgba(95,217,160,.35);font:400 13px/1.3 Inter,sans-serif;color:#b4b2be}
+.cupom-ok[hidden]{display:none}
+.cupom-ok svg{flex:none;width:16px;height:16px;color:#5fd9a0}
+.cupom-ok strong{font-weight:600;color:#5fd9a0;letter-spacing:.04em}
+.cupom-ok+.ptabs{margin-top:20px}
